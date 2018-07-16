@@ -1,0 +1,28 @@
+[
+    {
+        "outputFile": "/Users/mac/Documents/Programming/workspace/ppi_tiongkok/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 6,
+                    "endColumn": 12,
+                    "endOffset": 347
+                },
+                "from": {
+                    "file": "/Users/mac/Documents/Programming/workspace/ppi_tiongkok/android/app/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 6,
+                        "endColumn": 12,
+                        "endOffset": 347
+                    }
+                }
+            }
+        ]
+    }
+]

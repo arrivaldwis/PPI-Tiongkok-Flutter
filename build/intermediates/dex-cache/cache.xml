@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/mac/flutter/bin/cache/artifacts/engine/android-arm64/flutter.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="c539ef1e04e58dc5b59959e39280c0fb158c4ee8">
+        <dex dex="/Users/mac/Documents/Programming/workspace/ppi_tiongkok/build/app/intermediates/pre-dexed/debug/flutter_361ce50f1d7919e85286c636bd120870e5a19a13.jar" />
+    </item>
+
+</items>

@@ -7,6 +7,7 @@ import './screens/tentang.dart' as _tentangPage;
 import './screens/sambutan.dart' as _sambutanPage;
 import './screens/kontak.dart' as _kontakPage;
 import './screens/kritiksaran.dart' as _kritikSaranPage;
+import './screens/appbrowser.dart' as _AppBrowserPage;
 
 void main() => runApp(new MaterialApp(
   title: 'PPI Tiongkok',
@@ -32,6 +33,10 @@ void main() => runApp(new MaterialApp(
       );
       case '/kriran': return new FromRightToLeft(
         builder: (_) => new _kritikSaranPage.Support(),
+        settings: settings,
+      );
+      case '/appbrowser': return new FromRightToLeft(
+        builder: (_) => new _AppBrowserPage.Support(),
         settings: settings,
       );
     }
@@ -204,6 +209,14 @@ class TabsState extends State<Tabs> {
               Navigator.pop(context);
               Navigator.of(context).pushNamed('/kriran');
             }
+          ),
+          new ListTile(
+              leading: new Icon(Icons.apps),
+              title: new Text('App Browser'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context).pushNamed('/appbrowser');
+              }
           ),
           new Divider(),
           new ListTile(

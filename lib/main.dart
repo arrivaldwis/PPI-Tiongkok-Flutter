@@ -7,7 +7,8 @@ import './screens/tentang.dart' as _tentangPage;
 import './screens/sambutan.dart' as _sambutanPage;
 import './screens/kontak.dart' as _kontakPage;
 import './screens/kritiksaran.dart' as _kritikSaranPage;
-import './screens/appbrowser.dart' as _AppBrowserPage;
+import './screens/elibrary.dart' as _elibrary;
+import './screens/lapordiri.dart' as _lapordiri;
 
 void main() => runApp(new MaterialApp(
   title: 'PPI Tiongkok',
@@ -28,17 +29,21 @@ void main() => runApp(new MaterialApp(
         settings: settings,
       );
       case '/kontak': return new FromRightToLeft(
-        builder: (_) => new _kontakPage.Support(),
+        builder: (_) => new _kontakPage.Kontak(),
         settings: settings,
       );
       case '/kriran': return new FromRightToLeft(
         builder: (_) => new _kritikSaranPage.Support(),
         settings: settings,
       );
-      case '/appbrowser': return new FromRightToLeft(
-        builder: (_) => new _AppBrowserPage.Support(),
-        settings: settings,
-      );
+      case '/Elib': return new FromRightToLeft(
+      builder: (_) => new _elibrary.ELib(),
+      settings: settings,
+    );
+      case '/lapordiri': return new FromRightToLeft(
+      builder: (_) => new _lapordiri.Lapordiri(),
+      settings: settings,
+    );
     }
   },
   // routes: <String, WidgetBuilder> {
@@ -211,11 +216,19 @@ class TabsState extends State<Tabs> {
             }
           ),
           new ListTile(
-              leading: new Icon(Icons.apps),
-              title: new Text('App Browser'),
+              leading: new Icon(Icons.collections_bookmark),
+              title: new Text('E-Library'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context).pushNamed('/appbrowser');
+                Navigator.of(context).pushNamed('/Elib');
+              }
+          ),
+          new ListTile(
+              leading: new Icon(Icons.report),
+              title: new Text('Lapor Diri'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context).pushNamed('/lapordiri');
               }
           ),
           new Divider(),

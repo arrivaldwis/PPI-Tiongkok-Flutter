@@ -6,7 +6,7 @@ const kAndroidUserAgent =
     "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Mobile Safari/537.36";
 
 //URL ADDRESS FOR WEBVIEW
-String selectedUrl = "http://www.ppitiongkok.org/hubungi-kami/";
+String selectedUrl = "http://elibrary.ppitiongkok.org/";
 
 void main() {
   runApp(new MaterialApp());
@@ -14,16 +14,16 @@ void main() {
 
 
 
-class Kontak extends StatefulWidget {
-  Kontak({Key key, this.title}) : super(key: key);
+class ELib extends StatefulWidget {
+  ELib({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _KontakState createState() => new _KontakState();
+  _ELibState createState() => new _ELibState();
 }
 
-class _KontakState extends State<Kontak> {
+class _ELibState extends State<ELib> {
   // Instance of WebView plugin
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
 
@@ -97,7 +97,7 @@ class _KontakState extends State<Kontak> {
             url: selectedUrl,
             appBar: new AppBar(
               title: new Text(
-                'Hubungi Kami',
+                'E-library',
                 style: new TextStyle(
                   fontSize: Theme.of(context).platform == TargetPlatform.iOS
                       ? 17.0

@@ -3,3 +3,5 @@
 /build
 /captures
 *.lock
+.flutter-plugins
+.idea

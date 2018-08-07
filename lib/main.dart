@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import './tabs/beranda.dart' as _firstTab;
 import './tabs/aktifitas.dart' as _secondTab;
 import './tabs/cabang.dart' as _thirdTab;
-import './screens/tentang.dart' as _tentangPage;
+import './screens/tentang/tentang.dart' as _tentangPage;
 import './screens/sambutan.dart' as _sambutanPage;
 import './screens/kontak.dart' as _kontakPage;
 import './screens/kritiksaran.dart' as _kritikSaranPage;

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
+import './strukturkepengurusan.dart' as _strukturKepengurusan;
+
 class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) => new Scaffold(
@@ -62,6 +64,12 @@ class About extends StatelessWidget {
                     ]
                 ),
               ),
+              onTap: () {
+                 Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => _strukturKepengurusan.StrukturKepengurusan()),
+                );
+              },
             ),
             _buildTile(
               Padding
@@ -70,19 +78,26 @@ class About extends StatelessWidget {
                 child: Row
                   (
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>
                     [
-                      Column
-                        (
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>
-                        [
-                          Text('Sejarah', style: TextStyle(color: Colors.red)),
-                          Padding(padding: EdgeInsets.only(bottom: 3.0)),
-                          Text('PPIT', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w400, fontSize: 32.0))
-                        ],
+                      Flexible(
+                        child: Column (
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>
+                          [
+                            Text('AD/ART PPI Tiongkok', overflow: TextOverflow.ellipsis, maxLines: 2, style: TextStyle(color: Colors.red)),
+                            Padding(padding: EdgeInsets.only(bottom: 3.0)),
+                            Text('Amandemen Kongres VII', 
+                              softWrap: true,
+                              style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w400, fontSize: 18.0)),
+                            Text('Xiamen, 27 April 2018', 
+                              softWrap: true,
+                              style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w400, fontSize: 18.0))
+                          ],
+                        )
                       ),
                       Material
                         (
@@ -93,7 +108,7 @@ class About extends StatelessWidget {
                               child: Padding
                                 (
                                 padding: const EdgeInsets.all(16.0),
-                                child: Icon(Icons.history, color: Colors.white, size: 30.0),
+                                child: Icon(Icons.account_balance, color: Colors.white, size: 30.0),
                               )
                           )
                       )

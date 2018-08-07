@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import './strukturkepengurusan.dart' as _strukturKepengurusan;
 
@@ -115,6 +116,9 @@ class About extends StatelessWidget {
                     ]
                 ),
               ),
+              onTap: () {
+                launch("http://www.ppitiongkok.org/wp-content/uploads/2018/05/ADART-PPI-Tiongkok-Amandemen-Kongres-VII-Xiamen.pdf");
+              }
             )
           ],
           staggeredTiles: [

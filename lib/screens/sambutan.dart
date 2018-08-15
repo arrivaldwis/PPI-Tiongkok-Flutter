@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import '../screens/sambutandubes.dart' as _dubes;
+import '../screens/sambutanketuappit.dart' as _ppit;
 
 class Support extends StatelessWidget {
   @override
@@ -41,8 +43,7 @@ class Support extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>
                       [
-                        Column
-                          (
+                        Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>
@@ -51,13 +52,22 @@ class Support extends StatelessWidget {
                             Text('Duta Besar RI di Tiongkok', style: TextStyle(color: Colors.black, fontWeight: FontWeight.w400, fontSize: 20.0)),
                           ],
                         ),
+
                       ],
                     ),
                     Padding(padding: EdgeInsets.only(bottom: 4.0)),
-
                   ],
                 )
             ),
+            onTap: () {
+              Navigator.push(
+                context,
+                new MaterialPageRoute(
+                    builder: (context) =>
+                    new _dubes.sambutandubes()
+                ),
+              );
+            },
           ),
           _buildTile(
             Padding
@@ -88,10 +98,18 @@ class Support extends StatelessWidget {
                       ],
                     ),
                     Padding(padding: EdgeInsets.only(bottom: 4.0)),
-
                   ],
                 )
             ),
+            onTap: () {
+              Navigator.push(
+                context,
+                new MaterialPageRoute(
+                    builder: (context) =>
+                    new _ppit.sambutanketuappit()
+                ),
+              );
+            },
           )
         ],
         staggeredTiles: [

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/cabang/cabangList.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -7,12 +8,7 @@ class Settings extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        new Icon(
-          Icons.web,
-          size: 150.0,
-          color: Colors.black12
-        ),
-        new Text('Halaman Cabang')
+        new cabangList()
       ],
     ),
   );

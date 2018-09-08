@@ -86,17 +86,18 @@ class Home extends State<HomeMain> {
                 ],
               )),
         ),
-
         ListView.builder(
           itemCount: posts == null ? 0 : posts.length,
           itemBuilder: (BuildContext context, int index) {
             return _buildTile(
               Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   new FadeInImage.memoryNetwork(
                     placeholder: kTransparentImage,
                     image: posts[index]["featured_media"] == 0
-                        ? 'http://old.ppidunia.org/wp-content/uploads/2016/10/LAMBANG-JPEG.jpg'
+                        ? 'http://www.ppitiongkok.org/wp-content/uploads/2018/08/no_image.jpg'
                         : posts[index]["_embedded"]["wp:featuredmedia"][0]
                             ["source_url"],
                   ),
@@ -137,7 +138,7 @@ class Home extends State<HomeMain> {
       ],
       staggeredTiles: [
         StaggeredTile.extent(2, 110.0),
-        StaggeredTile.extent(2, 700.0),
+        StaggeredTile.extent(2, 900.0),
       ],
     ));
   }
@@ -155,6 +156,5 @@ Widget _buildTile(Widget child, {Function() onTap}) {
               : () {
                   print('Not set yet');
                 },
-          child: child
-      ));
+          child: child));
 }

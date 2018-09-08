@@ -19,7 +19,7 @@ class beritapost extends StatelessWidget {
             new FadeInImage.memoryNetwork(
               placeholder: kTransparentImage,
               image: post["featured_media"] == 0
-                  ? 'http://old.ppidunia.org/wp-content/uploads/2016/10/LAMBANG-JPEG.jpg'
+                  ? 'http://www.ppitiongkok.org/wp-content/uploads/2018/08/no_image.jpg'
                   : post["_embedded"]["wp:featuredmedia"][0]["source_url"],
             ),
             new Text(post['content']['rendered'].replaceAll(new RegExp(r'<[^>]*>'), ''))

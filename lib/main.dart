@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import './screens/cabang/Routes.dart';
 import './tabs/beranda.dart' as _firstTab;
 import './tabs/aktifitas.dart' as _secondTab;
 import './tabs/cabang.dart' as _thirdTab;
@@ -10,46 +11,49 @@ import './screens/kritiksaran.dart' as _kritikSaranPage;
 import './screens/elibrary.dart' as _elibrary;
 import './screens/lapordiri.dart' as _lapordiri;
 
-void main() => runApp(new MaterialApp(
-  title: 'PPI Tiongkok',
-  theme: new ThemeData(
-    primarySwatch: Colors.red,
-    scaffoldBackgroundColor: Colors.white,
-    primaryColor: Colors.red, backgroundColor: Colors.white
-  ),
-  home: new Tabs(),
-  onGenerateRoute: (RouteSettings settings) {
-    switch (settings.name) {
-      case '/tentang': return new FromRightToLeft(
-        builder: (_) => new _tentangPage.About(),
-        settings: settings,
-      );
-      case '/sambutan': return new FromRightToLeft(
-        builder: (_) => new _sambutanPage.Support(),
-        settings: settings,
-      );
-      case '/kontak': return new FromRightToLeft(
-        builder: (_) => new _kontakPage.Kontak(),
-        settings: settings,
-      );
-      case '/kriran': return new FromRightToLeft(
-        builder: (_) => new _kritikSaranPage.Support(),
-        settings: settings,
-      );
-      case '/Elib': return new FromRightToLeft(
-      builder: (_) => new _elibrary.ELib(),
-      settings: settings,
-    );
-      case '/lapordiri': return new FromRightToLeft(
-      builder: (_) => new _lapordiri.Lapordiri(),
-      settings: settings,
-    );
-    }
-  },
-  // routes: <String, WidgetBuilder> {
-  //   '/about': (BuildContext context) => new _aboutPage.About(),
-  // }
-));
+void main() {
+  Routes.initRoutes();
+  runApp(new MaterialApp(
+    title: 'PPI Tiongkok',
+    theme: new ThemeData(
+        primarySwatch: Colors.red,
+        scaffoldBackgroundColor: Colors.white,
+        primaryColor: Colors.red, backgroundColor: Colors.white
+    ),
+    home: new Tabs(),
+    onGenerateRoute: (RouteSettings settings) {
+      switch (settings.name) {
+        case '/tentang': return new FromRightToLeft(
+          builder: (_) => new _tentangPage.About(),
+          settings: settings,
+        );
+        case '/sambutan': return new FromRightToLeft(
+          builder: (_) => new _sambutanPage.Support(),
+          settings: settings,
+        );
+        case '/kontak': return new FromRightToLeft(
+          builder: (_) => new _kontakPage.Kontak(),
+          settings: settings,
+        );
+        case '/kriran': return new FromRightToLeft(
+          builder: (_) => new _kritikSaranPage.Support(),
+          settings: settings,
+        );
+        case '/Elib': return new FromRightToLeft(
+          builder: (_) => new _elibrary.ELib(),
+          settings: settings,
+        );
+        case '/lapordiri': return new FromRightToLeft(
+          builder: (_) => new _lapordiri.Lapordiri(),
+          settings: settings,
+        );
+      }
+    },
+    // routes: <String, WidgetBuilder> {
+    //   '/about': (BuildContext context) => new _aboutPage.About(),
+    // }
+  ));
+}
 
 class FromRightToLeft<T> extends MaterialPageRoute<T> {
   FromRightToLeft({ WidgetBuilder builder, RouteSettings settings })
@@ -231,14 +235,14 @@ class TabsState extends State<Tabs> {
                 Navigator.of(context).pushNamed('/lapordiri');
               }
           ),
-          new Divider(),
+          /*new Divider(),
           new ListTile(
             leading: new Icon(Icons.exit_to_app),
             title: new Text('Keluar'),
             onTap: () {
               Navigator.pop(context);
             }
-          ),
+          ),*/
         ],
       )
     )

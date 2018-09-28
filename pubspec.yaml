@@ -12,6 +12,8 @@ dependencies:
   transparent_image: ^0.1.0
   flutter_webview_plugin: ^0.1.6
   url_launcher: ^0.4.2+5
+  pdfviewer: ^1.0.0
+  path_provider: ^0.4.1
 
 dev_dependencies:
   flutter_test:
@@ -35,6 +37,8 @@ flutter:
   #  - images/a_dot_ham.jpeg
   assets:
     - res/logo.jpg
+    - res/djauharioratmangun.jpg
+    - res/fadlanmuzakki.png
     - assets/img/mars.png
     - assets/img/neptune.png
     - assets/img/moon.png

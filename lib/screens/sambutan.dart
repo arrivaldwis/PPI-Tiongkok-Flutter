@@ -64,7 +64,7 @@ class Support extends StatelessWidget {
                 context,
                 new MaterialPageRoute(
                     builder: (context) =>
-                    new _dubes.sambutandubes()
+                    new _dubes.Sambutandubes()
                 ),
               );
             },
@@ -106,7 +106,7 @@ class Support extends StatelessWidget {
                 context,
                 new MaterialPageRoute(
                     builder: (context) =>
-                    new _ppit.sambutanketuappit()
+                    new _ppit.Sambutanketuappit()
                 ),
               );
             },

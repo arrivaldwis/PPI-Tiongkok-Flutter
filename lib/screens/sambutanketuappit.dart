@@ -1,65 +1,73 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:transparent_image/transparent_image.dart';
 
-class sambutanketuappit extends StatefulWidget {
-  @override
-  _sambutanketuappitState createState() => _sambutanketuappitState();
-}
-
-class _sambutanketuappitState extends State<sambutanketuappit> {
-
-  // Base URL for our wordpress API
-  final String apiUrl = "http://www.ppitiongkok.org/wp-json/wp/v2/";
-
-  // Empty list for our posts
-  List posts;
-
-  // Function to fetch list of posts
-  Future<String> getPosts() async {
-    var res = await http.get(Uri.encodeFull(apiUrl + "pages?_embed&slug=kata-sambutan-ketua-ppit"),
-        headers: {"Accept": "application/json"});
-
-    // fill our posts list with results and update state
-    setState(() {
-      var resBody = json.decode(res.body);
-      posts = resBody;
-    });
-
-    return "Success!";
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    this.getPosts();
-  }
-
+class Sambutanketuappit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(
-          posts[0]['title']['rendered'],
-          style: new TextStyle(
-            fontSize: Theme.of(context).platform == TargetPlatform.iOS ? 17.0 : 20.0,
-          ),
-        ),
-        elevation: Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
-      ),
-      body: new Padding(
-        padding: EdgeInsets.all(16.0),
-        child: new ListView(
+
+    Widget textSection = Container(
+        padding: const EdgeInsets.only(top: 32.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            new FadeInImage.memoryNetwork(
-              placeholder: kTransparentImage,
-              image: posts[0]["featured_media"] == 0
-                  ? ''
-                  : posts[0]["content"]["rendered"],
+            Text(
+              'Salam Perhimpunan!\n',
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.left,
+              softWrap: true,
             ),
-            new Text(posts[0]['content']['rendered'].replaceAll(new RegExp(r'<[^>]*>'), ''))
+
+            Text(
+              '''
+            Puji  serta  syukur  kami  panjatkan  atas  kehadirat  Tuhan  yang  Maha  Esa. Karena berkat karuniaNya lah, kami dapat berkarya hingga saat ini. Selain itu,  atas  rahmat  Tuhan  YME,  kami  juga masih dapat diberikan kekuatan untuk tetap berhimpun di tanah rantau, Negeri dengan tembok raksasa ini.
+            
+            Melihat  jumlah  pelajar  Indonesia  yang  semakin  meningkat  dari  tahun ketahun dan melihat semangat para pelajar untuk berkarya di Negeri Panda,  maka  kami  Perhimpunan  Pelajar  Indonesia  (PPI)  Tiongkok mengajak teman-teman  semua  untuk  berkolaborasi  bersama  dalam wadah perhimpunan pelajar Indonesia di Tiongkok.
+            
+            Pepatah  Tiongkok  mengatakan  “Istirahat  bukan  berarti  berhenti,  Tetapi untuk menempuh perjalanan yang lebih jauh lagi”. “Xiu Xi Bu Shi Zou Deng Yu  Chang  De  Lu,  Er  Shi  Yao  Zou  Geng  Chang  De  Lu”.  Begitu  pula  dengan belajar di luar negeri, bukan berarti berhenti berkontribusi untuk negeri,  tetapi untuk memberikan yang lebih untuk Ibu Pertiwi.
+            
+            Oleh karena itu, PPI Tiongkok  hadir sebagai wadah bersama bagi  para putra-putri  bangsa  yang  sedang  menempuh ilmu di  negeri  panda  ini,  untuk berkolaborasi dan berkontribusi untuk negeri. Sehingga nantinya dapat saling menginpirasi.
+            
+            Akhir kata, kami berharap keterlibatan semua pihak yang ada dalam lingkup pelajar Indonesia di Tiongkok untuk bersama-sama mengawal organisasi ini agar dapat mengedankan nilai – nilai Tri Dharma Perguruan Tinggi serta menjadikan Perhimpunan ini sebagai wadah bersama untuk belajar dan berkarya tanpa memandang Suku, Etnis, Agama, Jenjang Pendidikan dan lain sebagainya yang dapat memecah persatuan kita sebagai bangsa Indonesia.
+            
+            Mari  berkolaborasi  untuk  berkontribusi untuk negeri dan menginspirasi satu sama lain.
+            ''',
+              style: TextStyle(fontSize: 14.0),
+              textAlign: TextAlign.justify,
+              softWrap: true,
+            ),
+
+            Text(
+              '\nWuhan, 6 Juni 2018',
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.left,
+              softWrap: true,
+            ),
+
+            Text(
+              '\nFadlan Muzakki',
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.left,
+              softWrap: true,
+            ),
+          ],
+        )
+    );
+
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Sambutan Ketua PPIT'),
+        ),
+        body: ListView(
+          padding: const EdgeInsets.all(32.0),
+          children: <Widget>[
+            Image.asset(
+                'res/fadlanmuzakki.png',
+              width: 100.0,
+              height: 200.0,
+              alignment: Alignment.center,
+            ),
+            textSection,
           ],
         ),
       ),

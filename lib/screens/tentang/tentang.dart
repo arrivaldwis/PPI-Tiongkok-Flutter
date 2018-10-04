@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'dart:io';
 import 'package:flutter/foundation.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:pdfviewer/pdfviewer_scaffold.dart';
-
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_pdf_viewer/flutter_pdf_viewer.dart';
 
 import './strukturkepengurusan.dart' as _strukturKepengurusan;
 
@@ -16,31 +11,6 @@ class About extends StatefulWidget {
 }
 
 class _AboutState extends State<About> {
-
-  String pathPDF="";
-
-  @override
-  void initState() {
-    super.initState();
-    bajarArchivo().then((f){
-      setState((){
-        pathPDF = f.path;
-        print(pathPDF);
-      });
-    });
-  }
-
-  Future<File> bajarArchivo() async {
-    final url = "http://www.ppitiongkok.org/wp-content/uploads/2018/05/ADART-PPI-Tiongkok-Amandemen-Kongres-VII-Xiamen.pdf";
-    final filename = url.substring(url.lastIndexOf("/") + 1);
-    var request = await HttpClient().getUrl(Uri.parse(url));
-    var response = await request.close();
-    var bytes = await consolidateHttpClientResponseBytes(response);
-    String dir = (await getApplicationDocumentsDirectory()).path;
-    File file = new File('$dir/$filename');
-    await file.writeAsBytes(bytes);
-    return file;
-  }
 
   @override
   Widget build(BuildContext context) => new Scaffold(
@@ -152,11 +122,7 @@ class _AboutState extends State<About> {
                     ]
                 ),
               ),
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(
-                      builder: (context) => PDFScreen02(pathPDF)
-                  ),
-              ),
+            onTap: () => FlutterPdfViewer.loadAsset('assets/pdf/ADART.pdf'),
           ),
         ],
         staggeredTiles: [
@@ -182,17 +148,3 @@ class _AboutState extends State<About> {
   }
 }
 
-class PDFScreen02 extends StatelessWidget {
-  String pathPDF="";
-  PDFScreen02(this.pathPDF);
-
-  @override
-  Widget build(BuildContext context) {
-    return PDFViewerScaffold(
-      appBar: AppBar(
-        title: Text("AD/ART PPI Tiongkok"),
-      ),
-      path: pathPDF,
-    );
-  }
-}

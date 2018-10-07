@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../screens/cabang/cabangList.dart';
 import '../screens/cabang/cabangcontent.dart';
 
 class Settings extends StatelessWidget {

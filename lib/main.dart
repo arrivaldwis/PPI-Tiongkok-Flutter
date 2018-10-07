@@ -36,7 +36,7 @@ void main() {
           settings: settings,
         );
         case '/kriran': return new FromRightToLeft(
-          builder: (_) => new _kritikSaranPage.Support(),
+          builder: (_) => new _kritikSaranPage.Feedback(),
           settings: settings,
         );
         case '/Elib': return new FromRightToLeft(

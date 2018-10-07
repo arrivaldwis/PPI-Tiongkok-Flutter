@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class Sambutanketuappit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     Widget textSection = Container(
         padding: const EdgeInsets.only(top: 32.0),
         child: Column(
@@ -16,7 +15,6 @@ class Sambutanketuappit extends StatelessWidget {
               textAlign: TextAlign.left,
               softWrap: true,
             ),
-
             Text(
               '''
             Puji  serta  syukur  kami  panjatkan  atas  kehadirat  Tuhan  yang  Maha  Esa. Karena berkat karuniaNya lah, kami dapat berkarya hingga saat ini. Selain itu,  atas  rahmat  Tuhan  YME,  kami  juga masih dapat diberikan kekuatan untuk tetap berhimpun di tanah rantau, Negeri dengan tembok raksasa ini.
@@ -35,14 +33,12 @@ class Sambutanketuappit extends StatelessWidget {
               textAlign: TextAlign.justify,
               softWrap: true,
             ),
-
             Text(
               '\nWuhan, 6 Juni 2018',
               style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               textAlign: TextAlign.left,
               softWrap: true,
             ),
-
             Text(
               '\nFadlan Muzakki',
               style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
@@ -50,19 +46,19 @@ class Sambutanketuappit extends StatelessWidget {
               softWrap: true,
             ),
           ],
-        )
-    );
+        ));
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: Theme.of(context).accentColor,
           title: Text('Sambutan Ketua PPIT'),
         ),
         body: ListView(
           padding: const EdgeInsets.all(32.0),
           children: <Widget>[
             Image.asset(
-                'res/fadlanmuzakki.png',
+              'res/fadlanmuzakki.png',
               width: 100.0,
               height: 200.0,
               alignment: Alignment.center,

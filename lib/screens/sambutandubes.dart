@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class Sambutandubes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     Widget textSection = Container(
         padding: const EdgeInsets.only(top: 32.0),
         child: Column(
@@ -22,7 +21,6 @@ class Sambutandubes extends StatelessWidget {
               textAlign: TextAlign.center,
               softWrap: true,
             ),
-
             Text(
               '''
               Pernyataan Presiden RI pertama itu menegaskan pentingnya peran generasi muda dalam mengisi kemerdekaan dan membangun Indonesia. Eksistensi dan kejayaan Negara Kesatuan RI di masa depan sepenuhnya berada dalam genggaman para pemuda Indonesia.
@@ -41,35 +39,32 @@ class Sambutandubes extends StatelessWidget {
               textAlign: TextAlign.justify,
               softWrap: true,
             ),
-
             Text(
               '\nDJAUHARI ORATMANGUN',
               style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               textAlign: TextAlign.left,
               softWrap: true,
             ),
-
             Text(
               'Duta Besar Republik Indonesia\nUntuk Republik Rakyat Tiongkok\nMerangkap Mongolia',
               style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               textAlign: TextAlign.left,
               softWrap: true,
             ),
-
           ],
-        )
-    );
+        ));
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: Theme.of(context).accentColor,
           title: Text('Sambutan Duta Besar RI Pada Situs Resmi PPI Tiongkok'),
         ),
         body: ListView(
           padding: const EdgeInsets.all(32.0),
           children: <Widget>[
             Image.asset(
-                'res/djauharioratmangun.jpg',
+              'res/djauharioratmangun.jpg',
               width: 100.0,
               height: 200.0,
               alignment: Alignment.center,

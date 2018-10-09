@@ -49,9 +49,13 @@ class cabangRow extends StatelessWidget {
               itemBuilder: (context, index) => new InkWell(
                     onTap: () =>
                         Navigator.of(context).push(new PageRouteBuilder(
-                          pageBuilder: (context, animation, secondaryAnimation) => new CabangWebsite(
-                              planet.daftarCabang[index].name,
-                              planet.daftarCabang[index].endpoint),
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) =>
+                                  new CabangWebsite(
+                                      key: new ObjectKey(index),
+                                      title: planet.daftarCabang[index].name,
+                                      endpoint:
+                                          planet.daftarCabang[index].endpoint),
                         )),
                     child: new Container(
                         padding: const EdgeInsets.only(bottom: 8.0),

@@ -10,7 +10,7 @@ class cabangList extends StatelessWidget {
       child: new Container(
         color: Theme.Colors.planetPageBackground,
         child: new ListView.builder(
-          itemExtent: 160.0,
+          itemExtent: 200.0,
           itemCount: cabangDetail.planets.length,
           itemBuilder: (_, index) => new cabangRow(cabangDetail.planets[index]),
         ),

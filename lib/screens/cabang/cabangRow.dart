@@ -1,11 +1,9 @@
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import '../cabang/Routes.dart';
 import '../../model/cabang.dart';
 import '../Theme.dart' as Theme;
+import './cabangWebsite.dart';
 
 class cabangRow extends StatelessWidget {
-
   final Cabang planet;
 
   cabangRow(this.planet);
@@ -31,7 +29,6 @@ class cabangRow extends StatelessWidget {
         color: Theme.Colors.planetCard,
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(8.0),
-
       ),
       child: new Container(
         margin: const EdgeInsets.only(top: 16.0, left: 72.0),
@@ -44,42 +41,37 @@ class cabangRow extends StatelessWidget {
                 color: const Color(0xFFF44336),
                 width: 24.0,
                 height: 1.0,
-                margin: const EdgeInsets.symmetric(vertical: 8.0)
+                margin: const EdgeInsets.symmetric(vertical: 8.0)),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: ClampingScrollPhysics(),
+              itemCount: planet.daftarCabang.length,
+              itemBuilder: (context, index) => new InkWell(
+                    onTap: () =>
+                        Navigator.of(context).push(new PageRouteBuilder(
+                          pageBuilder: (context, animation, secondaryAnimation) => new CabangWebsite(
+                              planet.daftarCabang[index].name,
+                              planet.daftarCabang[index].endpoint),
+                        )),
+                    child: new Container(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Text(planet.daftarCabang[index].name,
+                            style: Theme.TextStyles.planetDistance2)),
+                  ),
             ),
-            new Row(
-              children: <Widget>[
-                new Text(
-                    planet.daftarCabang, style: Theme.TextStyles.planetDistance2),
-                new Container(width: 24.0),
-              ],
-            )
           ],
         ),
       ),
     );
 
     return new Container(
-      height: 120.0,
       margin: const EdgeInsets.only(top: 16.0, bottom: 8.0),
-      child: new FlatButton(
-        //onPressed: () => _navigateTo(context, planet.id),
-
-        child: new Stack(
-          children: <Widget>[
-            planetCard,
-            planetThumbnail,
-          ],
-        ),
+      child: new Stack(
+        children: <Widget>[
+          planetCard,
+          planetThumbnail,
+        ],
       ),
     );
   }
-
-  _navigateTo(context, String id) {
-    Routes.navigateTo(
-        context,
-        '/detail/${planet.id}',
-        transition: TransitionType.fadeIn
-    );
-  }
 }
-

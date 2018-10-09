@@ -64,7 +64,7 @@ class TextStyles {
       color: Colors.planetTitle,
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w300,
-      fontSize: 11.0
+      fontSize: 13.0
   );
 
 

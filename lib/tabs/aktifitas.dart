@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import '../screens/aktifitascontent.dart' as _isi;
 
 class Dashboard extends StatefulWidget {
@@ -40,6 +41,18 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => new IG()
+            ),
+          ),
+          elevation: 4.0,
+          icon: const Icon(Icons.add),
+          label: const Text('Load more...'),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: new GridView.builder(
         itemCount: posts == null ? 0 : posts.length,
         gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
@@ -82,3 +95,35 @@ Widget _buildTile(Widget child, {Function() onTap}){
     ),
   );
 }
+
+class IG extends StatelessWidget {
+  final urlig = 'https://www.instagram.com/ppitiongkok/';
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      body: new PageView(
+        children: <Widget>[
+          new WebviewScaffold(
+            url: urlig,
+            appBar: new AppBar(
+              title: new Text(
+                'Instagram PPI Tiongkok',
+                style: new TextStyle(
+                  fontSize: Theme.of(context).platform == TargetPlatform.iOS
+                      ? 17.0
+                      : 20.0,
+                ),
+              ),
+              elevation:
+              Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
+            ),
+            withLocalStorage: true,
+            withZoom: true,
+          )
+        ],
+      ),
+    );
+  }
+}
+

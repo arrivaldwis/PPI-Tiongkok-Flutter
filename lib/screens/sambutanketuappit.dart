@@ -48,8 +48,7 @@ class Sambutanketuappit extends StatelessWidget {
           ],
         ));
 
-    return MaterialApp(
-      home: Scaffold(
+    return new Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).accentColor,
           title: Text('Sambutan Ketua PPIT'),
@@ -66,7 +65,7 @@ class Sambutanketuappit extends StatelessWidget {
             textSection,
           ],
         ),
-      ),
-    );
+      );
+
   }
 }

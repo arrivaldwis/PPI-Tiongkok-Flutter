@@ -54,8 +54,7 @@ class Sambutandubes extends StatelessWidget {
           ],
         ));
 
-    return MaterialApp(
-      home: Scaffold(
+    return new Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).accentColor,
           title: Text('Sambutan Duta Besar RI Pada Situs Resmi PPI Tiongkok'),
@@ -72,7 +71,7 @@ class Sambutandubes extends StatelessWidget {
             textSection,
           ],
         ),
-      ),
-    );
+      );
+
   }
 }

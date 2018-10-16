@@ -15,6 +15,7 @@ void main() {
   Routes.initRoutes();
   runApp(new MaterialApp(
     title: 'PPI Tiongkok',
+    debugShowCheckedModeBanner: false,
     theme: new ThemeData(
         primarySwatch: Colors.red,
         scaffoldBackgroundColor: Colors.white,
@@ -175,11 +176,15 @@ class TabsState extends State<Tabs> {
       child: new ListView(
         children: <Widget>[
           new Container(
-            height: 120.0,
+            height: 140.0,
             child: new DrawerHeader(
               padding: new EdgeInsets.all(0.0),
               decoration: new BoxDecoration(
-                color: new Color(0xFFECEFF1),
+                color: Colors.red,
+                image: new DecorationImage(
+                  image: new AssetImage('res/bendera.jpg'),
+                  fit: BoxFit.cover
+                ),
               ),
               child: new Center(
                 child: new Image.asset('res/logo.jpg',
@@ -235,14 +240,43 @@ class TabsState extends State<Tabs> {
                 Navigator.of(context).pushNamed('/lapordiri');
               }
           ),
-          /*new Divider(),
-          new ListTile(
-            leading: new Icon(Icons.exit_to_app),
-            title: new Text('Keluar'),
-            onTap: () {
-              Navigator.pop(context);
-            }
-          ),*/
+
+          new Divider(),
+
+          new Container(
+            padding: new EdgeInsets.only(left: 20.0, top: 10.0, right: 20.0, bottom: 20.0),
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                new Padding(
+                  padding: new EdgeInsets.only(bottom: 10.0,),
+                  child: new Text(
+                    'Media patner:',
+                    style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.normal),
+                  ),
+                ),
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    new Image.network(
+                      'http://www.ppitiongkok.org/wp-content/uploads/2018/10/krjogja.jpg',
+                      height: 30.0, width: 70.0,
+                    ),
+                    new Image.network(
+                      'http://www.ppitiongkok.org/wp-content/uploads/2018/10/myhomie.jpg',
+                      height: 30.0, width: 70.0,
+                    ),
+                    new Image.network(
+                      'http://www.ppitiongkok.org/wp-content/uploads/2018/10/rilisid.jpg',
+                      height: 30.0, width: 70.0,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          )
         ],
       )
     )

@@ -6,7 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter_full_pdf_viewer/flutter_full_pdf_viewer.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-import './strukturkepengurusan.dart' as _strukturKepengurusan;
+//import './strukturkepengurusan.dart' as _strukturKepengurusan;
 
 class About extends StatefulWidget {
   @override
@@ -15,19 +15,40 @@ class About extends StatefulWidget {
 
 class _AboutState extends State<About> {
   String pathPDF = "";
+  String pathPDF1 = "";
 
   @override
   void initState() {
     super.initState();
-    bajarArchivo().then((f) {
+    struktur().then((f) {
       setState(() {
         pathPDF = f.path;
         print(pathPDF);
       });
     });
+    adart().then((f) {
+      setState(() {
+        pathPDF1 = f.path;
+        print(pathPDF1);
+      });
+    });
+
   }
 
-  Future<File> bajarArchivo() async {
+  Future<File> struktur() async {
+    final url =
+        "http://www.ppitiongkok.org/wp-content/uploads/2018/10/STRUKTUR-PPIT-FIX.pdf";
+    final filename = url.substring(url.lastIndexOf("/") + 1);
+    var request = await HttpClient().getUrl(Uri.parse(url));
+    var response = await request.close();
+    var bytes = await consolidateHttpClientResponseBytes(response);
+    String dir = (await getApplicationDocumentsDirectory()).path;
+    File file = new File('$dir/$filename');
+    await file.writeAsBytes(bytes);
+    return file;
+  }
+
+  Future<File> adart() async {
     final url =
         "http://www.ppitiongkok.org/wp-content/uploads/2018/05/ADART-PPI-Tiongkok-Amandemen-Kongres-VII-Xiamen.pdf";
     final filename = url.substring(url.lastIndexOf("/") + 1);
@@ -92,14 +113,10 @@ class _AboutState extends State<About> {
                         )))
                   ]),
             ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        _strukturKepengurusan.StrukturKepengurusan()),
-              );
-            },
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => PDFScreen01(pathPDF)),
+            ),
           ),
           _buildTile(
             Padding(
@@ -146,7 +163,7 @@ class _AboutState extends State<About> {
             ),
             onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => PDFScreen02(pathPDF)),
+                  MaterialPageRoute(builder: (context) => PDFScreen02(pathPDF1)),
                 ),
           ),
         ],
@@ -172,17 +189,34 @@ class _AboutState extends State<About> {
   }
 }
 
-class PDFScreen02 extends StatelessWidget {
+class PDFScreen01 extends StatelessWidget {
   String pathPDF = "";
-  PDFScreen02(this.pathPDF);
+  PDFScreen01(this.pathPDF);
+
+  @override
+  Widget build(BuildContext context) {
+    return PDFViewerScaffold(
+      appBar: AppBar(
+        title: Text("Struktur Kepengurusan 2018-2020"),
+        backgroundColor: Theme.of(context).accentColor,
+      ),
+      path: pathPDF,
+    );
+  }
+}
+
+class PDFScreen02 extends StatelessWidget {
+  String pathPDF1 = "";
+  PDFScreen02(this.pathPDF1);
 
   @override
   Widget build(BuildContext context) {
     return PDFViewerScaffold(
       appBar: AppBar(
         title: Text("AD/ART PPI Tiongkok"),
+        backgroundColor: Theme.of(context).accentColor,
       ),
-      path: pathPDF,
+      path: pathPDF1,
     );
   }
 }

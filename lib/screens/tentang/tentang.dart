@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:flutter_full_pdf_viewer/flutter_full_pdf_viewer.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-
-//import './strukturkepengurusan.dart' as _strukturKepengurusan;
+import 'package:flutter_pdf_viewer/flutter_pdf_viewer.dart';
 
 class About extends StatefulWidget {
   @override
@@ -14,52 +11,7 @@ class About extends StatefulWidget {
 }
 
 class _AboutState extends State<About> {
-  String pathPDF = "";
-  String pathPDF1 = "";
 
-  @override
-  void initState() {
-    super.initState();
-    struktur().then((f) {
-      setState(() {
-        pathPDF = f.path;
-        print(pathPDF);
-      });
-    });
-    adart().then((f) {
-      setState(() {
-        pathPDF1 = f.path;
-        print(pathPDF1);
-      });
-    });
-
-  }
-
-  Future<File> struktur() async {
-    final url =
-        "http://www.ppitiongkok.org/wp-content/uploads/2018/10/STRUKTUR-PPIT-FIX.pdf";
-    final filename = url.substring(url.lastIndexOf("/") + 1);
-    var request = await HttpClient().getUrl(Uri.parse(url));
-    var response = await request.close();
-    var bytes = await consolidateHttpClientResponseBytes(response);
-    String dir = (await getApplicationDocumentsDirectory()).path;
-    File file = new File('$dir/$filename');
-    await file.writeAsBytes(bytes);
-    return file;
-  }
-
-  Future<File> adart() async {
-    final url =
-        "http://www.ppitiongkok.org/wp-content/uploads/2018/05/ADART-PPI-Tiongkok-Amandemen-Kongres-VII-Xiamen.pdf";
-    final filename = url.substring(url.lastIndexOf("/") + 1);
-    var request = await HttpClient().getUrl(Uri.parse(url));
-    var response = await request.close();
-    var bytes = await consolidateHttpClientResponseBytes(response);
-    String dir = (await getApplicationDocumentsDirectory()).path;
-    File file = new File('$dir/$filename');
-    await file.writeAsBytes(bytes);
-    return file;
-  }
 
   @override
   Widget build(BuildContext context) => new Scaffold(
@@ -113,10 +65,7 @@ class _AboutState extends State<About> {
                         )))
                   ]),
             ),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => PDFScreen01(pathPDF)),
-            ),
+            onTap: () =>  FlutterPdfViewer.loadAsset('assets/pdf/STRUKTUR.pdf'),
           ),
           _buildTile(
             Padding(
@@ -161,10 +110,7 @@ class _AboutState extends State<About> {
                         )))
                   ]),
             ),
-            onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => PDFScreen02(pathPDF1)),
-                ),
+            onTap: () => FlutterPdfViewer.loadAsset('assets/pdf/ADART.pdf'),
           ),
         ],
         staggeredTiles: [
@@ -189,34 +135,3 @@ class _AboutState extends State<About> {
   }
 }
 
-class PDFScreen01 extends StatelessWidget {
-  String pathPDF = "";
-  PDFScreen01(this.pathPDF);
-
-  @override
-  Widget build(BuildContext context) {
-    return PDFViewerScaffold(
-      appBar: AppBar(
-        title: Text("Struktur Kepengurusan 2018-2020"),
-        backgroundColor: Theme.of(context).accentColor,
-      ),
-      path: pathPDF,
-    );
-  }
-}
-
-class PDFScreen02 extends StatelessWidget {
-  String pathPDF1 = "";
-  PDFScreen02(this.pathPDF1);
-
-  @override
-  Widget build(BuildContext context) {
-    return PDFViewerScaffold(
-      appBar: AppBar(
-        title: Text("AD/ART PPI Tiongkok"),
-        backgroundColor: Theme.of(context).accentColor,
-      ),
-      path: pathPDF1,
-    );
-  }
-}

@@ -11,7 +11,7 @@ dependencies:
   transparent_image: ^0.1.0
   flutter_webview_plugin: ^0.2.1+2
   url_launcher: ^3.0.3
-  flutter_full_pdf_viewer: ^1.0.1
+  flutter_pdf_viewer: ^0.0.4
   path_provider: ^0.4.1
   mailer: ^2.0.1
   flutter_spinkit: "^2.1.0"
@@ -49,7 +49,7 @@ flutter:
     - assets/img/mercury.png
     - assets/img/no_image.jpg
     - assets/pdf/ADART.pdf
-
+    - assets/pdf/STRUKTUR.pdf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/.

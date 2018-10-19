@@ -260,16 +260,16 @@ class TabsState extends State<Tabs> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    new Image.network(
-                      'http://www.ppitiongkok.org/wp-content/uploads/2018/10/krjogja.jpg',
+                    new Image.asset(
+                      'assets/img/krjogja.png',
                       height: 30.0, width: 70.0,
                     ),
-                    new Image.network(
-                      'http://www.ppitiongkok.org/wp-content/uploads/2018/10/myhomie.jpg',
+                    new Image.asset(
+                      'assets/img/myhomieclub.png',
                       height: 30.0, width: 70.0,
                     ),
-                    new Image.network(
-                      'http://www.ppitiongkok.org/wp-content/uploads/2018/10/rilisid.jpg',
+                    new Image.asset(
+                      'assets/img/rilisid.png',
                       height: 30.0, width: 70.0,
                     ),
                   ],

@@ -4,39 +4,39 @@ import '../Theme.dart' as Theme;
 import './cabangWebsite.dart';
 
 class cabangRow extends StatelessWidget {
-  final Cabang planet;
+  final Cabang china;
 
-  cabangRow(this.planet);
+  cabangRow(this.china);
 
   @override
   Widget build(BuildContext context) {
     final planetThumbnail = new Container(
-      alignment: new FractionalOffset(0.0, 0.5),
+      alignment: new FractionalOffset(0.1, 0.5),
       margin: const EdgeInsets.only(left: 24.0),
       child: new Hero(
-        tag: 'planet-icon-${planet.id}',
+        tag: 'planet-icon-${china.id}',
         child: new Image(
-          image: new AssetImage(planet.image),
-          height: Theme.Dimens.planetHeight,
-          width: Theme.Dimens.planetWidth,
+          image: new AssetImage(china.image),
+          height: 150.0,
+          width: 150.0,
         ),
       ),
     );
 
     final planetCard = new Container(
-      margin: const EdgeInsets.only(left: 72.0, right: 24.0),
+      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
       decoration: new BoxDecoration(
         color: Theme.Colors.planetCard,
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(8.0),
       ),
       child: new Container(
-        margin: const EdgeInsets.only(top: 16.0, left: 72.0),
+        margin: const EdgeInsets.only(top: 16.0, left: 200.0),
         constraints: new BoxConstraints.expand(),
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            new Text(planet.name, style: Theme.TextStyles.planetTitle),
+            new Text(china.name, style: Theme.TextStyles.planetTitle),
             new Container(
                 color: const Color(0xFFF44336),
                 width: 24.0,
@@ -45,7 +45,7 @@ class cabangRow extends StatelessWidget {
             ListView.builder(
               shrinkWrap: true,
               physics: ClampingScrollPhysics(),
-              itemCount: planet.daftarCabang.length,
+              itemCount: china.daftarCabang.length,
               itemBuilder: (context, index) => new InkWell(
                     onTap: () =>
                         Navigator.of(context).push(new PageRouteBuilder(
@@ -53,13 +53,13 @@ class cabangRow extends StatelessWidget {
                               (context, animation, secondaryAnimation) =>
                                   new CabangWebsite(
                                       key: new ObjectKey(index),
-                                      title: planet.daftarCabang[index].name,
+                                      title: china.daftarCabang[index].name,
                                       endpoint:
-                                          planet.daftarCabang[index].endpoint),
+                                          china.daftarCabang[index].endpoint),
                         )),
                     child: new Container(
                         padding: const EdgeInsets.only(bottom: 8.0),
-                        child: Text(planet.daftarCabang[index].name,
+                        child: Text(china.daftarCabang[index].name,
                             style: Theme.TextStyles.planetDistance2)),
                   ),
             ),

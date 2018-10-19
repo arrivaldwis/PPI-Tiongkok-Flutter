@@ -42,12 +42,13 @@ flutter:
     - res/djauharioratmangun.jpg
     - res/fadlanmuzakki.png
     - res/bendera.jpg
-    - assets/img/mars.png
     - assets/img/neptune.png
     - assets/img/moon.png
     - assets/img/earth.png
-    - assets/img/mercury.png
     - assets/img/no_image.jpg
+    - assets/img/krjogja.png
+    - assets/img/myhomieclub.png
+    - assets/img/rilisid.png
     - assets/pdf/ADART.pdf
     - assets/pdf/STRUKTUR.pdf
 

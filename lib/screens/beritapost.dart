@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class beritapost extends StatelessWidget {
 
@@ -22,7 +23,8 @@ class beritapost extends StatelessWidget {
                   ? 'http://www.ppitiongkok.org/wp-content/uploads/2018/08/no_image.jpg'
                   : post["_embedded"]["wp:featuredmedia"][0]["source_url"],
             ),
-            new Text(post['content']['rendered'].replaceAll(new RegExp(r'<[^>]*>'), ''))
+            new Html(data: post['content']['rendered'])
+            //new Text(post['content']['rendered'].replaceAll(new RegExp(r'<[^>]*>'), ''))
           ],
         ),
       ),

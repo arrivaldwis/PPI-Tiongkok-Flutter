@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:transparent_image/transparent_image.dart';
 import '../screens/beritapost.dart' as _beritaPostPage;
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class HomeMain extends StatefulWidget {
   @override
@@ -107,8 +108,7 @@ class Home extends State<HomeMain> {
                       title: new Padding(
                           padding: EdgeInsets.symmetric(vertical: 10.0),
                           child: new Text(posts[index]["title"]["rendered"])),
-                      subtitle: new Text(posts[index]["excerpt"]["rendered"]
-                          .replaceAll(new RegExp(r'<[^>]*>'), '')),
+                      subtitle: new Html(data: posts[index]["excerpt"]["rendered"]),
                     ),
                   ),
                   new ButtonTheme.bar(

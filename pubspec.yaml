@@ -16,10 +16,19 @@ dependencies:
   mailer: ^2.0.1
   flutter_spinkit: "^2.1.0"
 
+  flutter_html: ^0.8.1
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  flutter_launcher_icons: ^0.6.1
+
+flutter_icons:
+  image_path: "res/logo.jpg"
+  android: true
+  ios: true
 
 
 # For information on the generic Dart part of this file, see the

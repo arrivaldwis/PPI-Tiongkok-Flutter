@@ -429,7 +429,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.flutterStarter;
+				PRODUCT_BUNDLE_IDENTIFIER = id.ppit.mobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -452,7 +452,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.flutterStarter;
+				PRODUCT_BUNDLE_IDENTIFIER = id.ppit.mobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

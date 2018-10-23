@@ -1,4 +1,4 @@
-package com.yourcompany.flutterstarter;
+package id.ppit.mobile;
 
 import android.os.Bundle;
 

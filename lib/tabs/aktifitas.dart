@@ -13,7 +13,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
 
   // Base URL for our instagram API
-  final String apiUrl = "https://api.instagram.com/v1/users/679855155/media/recent/?access_token=679855155.135f81d.1b4a1b50181143c983b9642d1ad26bd1";
+  final String apiUrl = "https://api.instagram.com/v1/users/679855155/media/recent/?access_token=679855155.1677ed0.60e9260245a74290a67fce834c060b57";
 
   // Empty list for our posts
   List posts;

@@ -102,8 +102,10 @@ class Tabs extends StatefulWidget {
   TabsState createState() => new TabsState();
 }
 
-class TabsState extends State<Tabs> {
-  
+class TabsState extends State<Tabs> with AutomaticKeepAliveClientMixin<Tabs>{
+
+  bool get wantKeepAlive => true;
+
   PageController _tabController;
 
   var _title_app = null;

@@ -12,7 +12,10 @@ class HomeMain extends StatefulWidget {
   State<StatefulWidget> createState() => Home();
 }
 
-class Home extends State<HomeMain> {
+class Home extends State<HomeMain> with AutomaticKeepAliveClientMixin<HomeMain>{
+
+  bool get wantKeepAlive => true;
+
   // Base URL for our wordpress API
   final String apiUrl = "http://www.ppitiongkok.org/wp-json/wp/v2/";
 

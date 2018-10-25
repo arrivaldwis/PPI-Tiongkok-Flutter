@@ -5,4 +5,6 @@
 *.lock
 .flutter-plugins
 .idea
-flutter_01.log
+# ignorining maximum 99 log of flutter error
+flutter_??.log
+android/key.properties

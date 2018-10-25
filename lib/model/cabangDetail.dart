@@ -2,11 +2,11 @@ import './cabang.dart';
 import './cabangInformations.dart';
 
 class cabangDetail {
-  static final List<Cabang> planets = [
+  static final List<Cabang> regions = [
     const Cabang(
         id: "1",
         name: "Region Utara",
-        image: "assets/img/earth.png",
+        image: "assets/img/utara.png",
         // daftarCabang: "PPIT Harbin\nPERMIT Beijing\nPPIT Tianjin\nPPIT Shijiazhuang\nPPIT Zhengzhou",
         daftarCabang: [
           const CabangInformations(
@@ -33,7 +33,7 @@ class cabangDetail {
     const Cabang(
         id: "2",
         name: "Region Timur",
-        image: "assets/img/neptune.png",
+        image: "assets/img/timur.png",
         // daftarCabang: "PPIT Hangzhou\nPPIT Ningbo\nPPIT Shanghai\nPPIT Wuxi",
         daftarCabang: [
           const CabangInformations(
@@ -56,7 +56,7 @@ class cabangDetail {
     const Cabang(
         id: "3",
         name: "Region Selatan",
-        image: "assets/img/moon.png",
+        image: "assets/img/selatan.png",
         // daftarCabang: "PPIT Chongqing\nPPIT Guilin\nPPIT Hongkong\nPPIT Wuhan\nPPIT Xiamen",
         daftarCabang: [
           const CabangInformations(
@@ -83,6 +83,6 @@ class cabangDetail {
   ];
 
   static Cabang getPlanetById(id) {
-    return planets.where((p) => p.id == id).first;
+    return regions.where((p) => p.id == id).first;
   }
 }

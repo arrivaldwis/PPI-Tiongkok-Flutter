@@ -10,18 +10,20 @@ class Dashboard extends StatefulWidget {
   _DashboardState createState() => _DashboardState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _DashboardState extends State<Dashboard> with AutomaticKeepAliveClientMixin<Dashboard> {
+  bool get wantKeepAlive => true;
 
   // Base URL for our instagram API
-  final String apiUrl = "https://api.instagram.com/v1/users/679855155/media/recent/?access_token=679855155.1677ed0.60e9260245a74290a67fce834c060b57";
+  final String apiUrl =
+      "https://api.instagram.com/v1/users/679855155/media/recent/?access_token=679855155.1677ed0.60e9260245a74290a67fce834c060b57";
 
   // Empty list for our posts
   List posts;
 
   // Function to fetch list of posts
   Future<String> getPosts() async {
-    var res = await http.get(Uri.encodeFull(apiUrl),
-        headers: {"Accept": "application/json"});
+    var res = await http
+        .get(Uri.encodeFull(apiUrl), headers: {"Accept": "application/json"});
 
     // fill our posts list with results and update state
     setState(() {
@@ -42,35 +44,33 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => new IG()
+        onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => new IG()),
             ),
-          ),
-          elevation: 4.0,
-          icon: const Icon(Icons.add),
-          label: const Text('Load more...'),
+        elevation: 4.0,
+        icon: const Icon(Icons.add),
+        label: const Text('Load more...'),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: new GridView.builder(
         itemCount: posts == null ? 0 : posts.length,
-        gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3),
-        itemBuilder: (BuildContext context, int index){
+        gridDelegate:
+            new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+        itemBuilder: (BuildContext context, int index) {
           return _buildTile(
             new GridTile(
-              child: new Image.network(posts[index]["images"]["thumbnail"]["url"]),
+              child:
+                  new Image.network(posts[index]["images"]["thumbnail"]["url"]),
             ),
-            onTap: (){
+            onTap: () {
               //launch(posts[index]["link"]);
               Navigator.push(
                 context,
                 new MaterialPageRoute(
-                  builder: (context) =>
-                  new  _isi.aktifitascontent(
-                    post: posts[index],
-                  ),
+                  builder: (context) => new _isi.aktifitascontent(
+                        post: posts[index],
+                      ),
                 ),
               );
             },
@@ -81,7 +81,7 @@ class _DashboardState extends State<Dashboard> {
   }
 }
 
-Widget _buildTile(Widget child, {Function() onTap}){
+Widget _buildTile(Widget child, {Function() onTap}) {
   return Material(
     elevation: 10.0,
     shadowColor: Color(0x802196F3),
@@ -89,8 +89,8 @@ Widget _buildTile(Widget child, {Function() onTap}){
       onTap: onTap != null
           ? () => onTap()
           : () {
-        print('Not set yet');
-      },
+              print('Not set yet');
+            },
       child: child,
     ),
   );
@@ -116,7 +116,7 @@ class IG extends StatelessWidget {
                 ),
               ),
               elevation:
-              Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
+                  Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
             ),
             withLocalStorage: true,
             withZoom: true,
@@ -126,4 +126,3 @@ class IG extends StatelessWidget {
     );
   }
 }
-

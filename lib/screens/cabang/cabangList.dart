@@ -8,11 +8,11 @@ class cabangList extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Flexible(
       child: new Container(
-        color: Theme.Colors.planetPageBackground,
+        color: Theme.Colors.regionPageBackground,
         child: new ListView.builder(
           itemExtent: 200.0,
-          itemCount: cabangDetail.planets.length,
-          itemBuilder: (_, index) => new cabangRow(cabangDetail.planets[index]),
+          itemCount: cabangDetail.regions.length,
+          itemBuilder: (_, index) => new cabangRow(cabangDetail.regions[index]),
         ),
       ),
     );

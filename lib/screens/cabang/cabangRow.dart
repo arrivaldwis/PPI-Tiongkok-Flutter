@@ -14,7 +14,7 @@ class cabangRow extends StatelessWidget {
       alignment: new FractionalOffset(0.1, 0.5),
       margin: const EdgeInsets.only(left: 24.0, right: 10.0),
       child: new Hero(
-        tag: 'planet-icon-${china.id}',
+        tag: 'region-icon-${china.id}',
         child: new Image(
           image: new AssetImage(china.image),
           height: 150.0,
@@ -26,7 +26,7 @@ class cabangRow extends StatelessWidget {
     final planetCard = new Container(
       margin: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 1.0),
       decoration: new BoxDecoration(
-        color: Theme.Colors.planetCard,
+        color: Theme.Colors.regionCard,
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(8.0),
       ),
@@ -36,7 +36,7 @@ class cabangRow extends StatelessWidget {
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            new Text(china.name, style: Theme.TextStyles.planetTitle),
+            new Text(china.name, style: Theme.TextStyles.regionTitle),
             new Container(
                 color: const Color(0xFFF44336),
                 width: 24.0,
@@ -60,7 +60,7 @@ class cabangRow extends StatelessWidget {
                     child: new Container(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Text(china.daftarCabang[index].name,
-                            style: Theme.TextStyles.planetDistance2)),
+                            style: Theme.TextStyles.regionDistance2)),
                   ),
             ),
           ],

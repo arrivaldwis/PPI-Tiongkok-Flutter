@@ -12,9 +12,9 @@ class Colors {
   static const Color appBarGradientEnd = const Color(0xFFF44336);
 
   //static const Color planetCard = const Color(0xFF434273);
-  static const Color planetCard = const Color(0xFFFFFFFF);
+  static const Color regionCard = const Color(0xFFFFFFFF);
   //static const Color planetListBackground = const Color(0xFF3E3963);
-  static const Color planetPageBackground = const Color(0xFFEEEEEE);
+  static const Color regionPageBackground = const Color(0xFFEEEEEE);
   static const Color planetTitle = const Color(0xFFF44336);
   static const Color planetLocation = const Color(0x66FFFFFF);
   static const Color planetDistance = const Color(0x66FFFFFF);
@@ -39,7 +39,7 @@ class TextStyles {
       fontSize: 36.0
   );
 
-  static const TextStyle planetTitle = const TextStyle(
+  static const TextStyle regionTitle = const TextStyle(
       color: Colors.planetTitle,
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w600,
@@ -60,7 +60,7 @@ class TextStyles {
       fontSize: 12.0
   );
 
-  static const TextStyle planetDistance2 = const TextStyle(
+  static const TextStyle regionDistance2 = const TextStyle(
       color: Colors.planetTitle,
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w300,

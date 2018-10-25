@@ -12,7 +12,7 @@ class cabangRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final planetThumbnail = new Container(
       alignment: new FractionalOffset(0.1, 0.5),
-      margin: const EdgeInsets.only(left: 24.0),
+      margin: const EdgeInsets.only(left: 24.0, right: 10.0),
       child: new Hero(
         tag: 'planet-icon-${china.id}',
         child: new Image(
@@ -24,7 +24,7 @@ class cabangRow extends StatelessWidget {
     );
 
     final planetCard = new Container(
-      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+      margin: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 1.0),
       decoration: new BoxDecoration(
         color: Theme.Colors.planetCard,
         shape: BoxShape.rectangle,

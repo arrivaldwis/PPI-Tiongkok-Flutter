@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "757314709516",
+    "firebase_url": "https://ppi-tiongkok-mobile-apps.firebaseio.com",
+    "project_id": "ppi-tiongkok-mobile-apps",
+    "storage_bucket": "ppi-tiongkok-mobile-apps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757314709516:android:05eb51294047f9ec",
+        "android_client_info": {
+          "package_name": "id.ppit.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "757314709516-rak30a503ma1i3m1guihi3k3dcpsne3l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRqRJ7hZZCvOMLK_ackdcNGE5fk-KusmU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

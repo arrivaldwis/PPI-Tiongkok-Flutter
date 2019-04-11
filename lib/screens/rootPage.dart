@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ppi_tiongkok/tabs/simposium.dart';
 import 'package:ppi_tiongkok/services/authentication.dart';
-import 'package:ppi_tiongkok/screens/homePage.dart';
+import 'package:ppi_tiongkok/screens/DetailPage.dart';
 
 class RootPage extends StatefulWidget {
   RootPage({this.auth});

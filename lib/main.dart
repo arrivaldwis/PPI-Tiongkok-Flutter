@@ -124,56 +124,7 @@ class TabsState extends State<Tabs> with AutomaticKeepAliveClientMixin<Tabs> {
 
   @override
   Widget build(BuildContext context) => new Scaffold(
-
-      //App Bar
-      appBar: new AppBar(
-        title: new Text(
-          _title_app,
-          style: new TextStyle(
-            fontSize:
-                Theme.of(context).platform == TargetPlatform.iOS ? 17.0 : 20.0,
-          ),
-        ),
-        elevation: Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
-      ),
-
-      //Content of tabs
-      body: new PageView(
-        controller: _tabController,
-        onPageChanged: onTabChanged,
-        children: <Widget>[
-          new _firstTab.HomeMain(),
-          new _secondTab.RootPage(auth: new Auth()),
-          new _thirdTab.cabang()
-        ],
-      ),
-
-      //Tabs
-      bottomNavigationBar: Theme.of(context).platform == TargetPlatform.iOS
-          ? new CupertinoTabBar(
-              activeColor: Colors.red,
-              currentIndex: _tab,
-              onTap: onTap,
-              items: TabItems.map((TabItem) {
-                return new BottomNavigationBarItem(
-                  title: new Text(TabItem.title),
-                  icon: new Icon(TabItem.icon),
-                );
-              }).toList(),
-            )
-          : new BottomNavigationBar(
-              currentIndex: _tab,
-              onTap: onTap,
-              items: TabItems.map((TabItem) {
-                return new BottomNavigationBarItem(
-                  title: new Text(TabItem.title),
-                  icon: new Icon(TabItem.icon),
-                );
-              }).toList(),
-            ),
-
-      //Drawer
-      drawer: new Drawer(
+      drawer: Drawer(
           child: new ListView(
         children: <Widget>[
           new Container(
@@ -277,7 +228,54 @@ class TabsState extends State<Tabs> with AutomaticKeepAliveClientMixin<Tabs> {
             ),
           )
         ],
-      )));
+      )),
+
+      //App Bar
+      appBar: new AppBar(
+        title: new Text(
+          _title_app,
+          style: new TextStyle(
+            fontSize:
+                Theme.of(context).platform == TargetPlatform.iOS ? 17.0 : 20.0,
+          ),
+        ),
+        elevation: Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
+      ),
+
+      //Content of tabs
+      body: new PageView(
+        controller: _tabController,
+        onPageChanged: onTabChanged,
+        children: <Widget>[
+          new _firstTab.HomeMain(),
+          new _secondTab.RootPage(auth: new Auth()),
+          new _thirdTab.cabang()
+        ],
+      ),
+
+      //Tabs
+      bottomNavigationBar: Theme.of(context).platform == TargetPlatform.iOS
+          ? new CupertinoTabBar(
+              activeColor: Colors.red,
+              currentIndex: _tab,
+              onTap: onTap,
+              items: TabItems.map((TabItem) {
+                return new BottomNavigationBarItem(
+                  title: new Text(TabItem.title),
+                  icon: new Icon(TabItem.icon),
+                );
+              }).toList(),
+            )
+          : new BottomNavigationBar(
+              currentIndex: _tab,
+              onTap: onTap,
+              items: TabItems.map((TabItem) {
+                return new BottomNavigationBarItem(
+                  title: new Text(TabItem.title),
+                  icon: new Icon(TabItem.icon),
+                );
+              }).toList(),
+            ));
 
   void onTap(int tab) {
     _tabController.jumpToPage(tab);

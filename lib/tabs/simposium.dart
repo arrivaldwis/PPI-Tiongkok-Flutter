@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ppi_tiongkok/services/authentication.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class simposiumLoginSignUp extends StatefulWidget {
   simposiumLoginSignUp({this.auth, this.onSignedIn});
@@ -15,10 +17,13 @@ enum FormMode { LOGIN, SIGNUP }
 
 class _simposiumLoginSignUpState extends State<simposiumLoginSignUp> {
   final _formKey = new GlobalKey<FormState>();
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  SharedPreferences prefs;
 
   String _email;
   String _password;
   String _errorMessage;
+  FirebaseUser currentUser;
 
   // Initial form is login form
   FormMode _formMode = FormMode.LOGIN;
@@ -126,12 +131,12 @@ class _simposiumLoginSignUpState extends State<simposiumLoginSignUp> {
       builder: (BuildContext context) {
         // return object of type Dialog
         return AlertDialog(
-          title: new Text("Verify your account"),
+          title: new Text("Verifikasi email"),
           content:
-              new Text("Link to verify account has been sent to your email"),
+              new Text("Link verifikasi telah di dikirimkan ke email kamu"),
           actions: <Widget>[
             new FlatButton(
-              child: new Text("Dismiss"),
+              child: new Text("Hilangkan"),
               onPressed: () {
                 _changeFormToLogin();
                 Navigator.of(context).pop();
@@ -206,7 +211,7 @@ class _simposiumLoginSignUpState extends State<simposiumLoginSignUp> {
               Icons.mail,
               color: Colors.grey,
             )),
-        validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
+        validator: (value) => value.isEmpty ? 'Email tidak boleh kosong' : null,
         onSaved: (value) => _email = value,
       ),
     );
@@ -225,7 +230,8 @@ class _simposiumLoginSignUpState extends State<simposiumLoginSignUp> {
               Icons.lock,
               color: Colors.grey,
             )),
-        validator: (value) => value.isEmpty ? 'Password can\'t be empty' : null,
+        validator: (value) =>
+            value.isEmpty ? 'Password tidak boleh kosong' : null,
         onSaved: (value) => _password = value,
       ),
     );
@@ -234,9 +240,9 @@ class _simposiumLoginSignUpState extends State<simposiumLoginSignUp> {
   Widget _showSecondaryButton() {
     return new FlatButton(
       child: _formMode == FormMode.LOGIN
-          ? new Text('Create an account',
+          ? new Text('Buat Akun Simposium',
               style: new TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300))
-          : new Text('Have an account? Sign in',
+          : new Text('Punya Akun? Silahkan Sign In',
               style:
                   new TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300)),
       onPressed: _formMode == FormMode.LOGIN
@@ -256,9 +262,9 @@ class _simposiumLoginSignUpState extends State<simposiumLoginSignUp> {
                 borderRadius: new BorderRadius.circular(30.0)),
             color: Colors.red,
             child: _formMode == FormMode.LOGIN
-                ? new Text('Login',
+                ? new Text('Masuk',
                     style: new TextStyle(fontSize: 20.0, color: Colors.white))
-                : new Text('Create account',
+                : new Text('Daftar Simposium',
                     style: new TextStyle(fontSize: 20.0, color: Colors.white)),
             onPressed: _validateAndSubmit,
           ),

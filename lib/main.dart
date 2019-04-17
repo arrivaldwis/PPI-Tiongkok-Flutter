@@ -24,6 +24,10 @@ void main() {
     home: new Tabs(),
     onGenerateRoute: (RouteSettings settings) {
       switch (settings.name) {
+        case '/simposium': return new FromRightToLeft(
+          builder: (_) => new _tentangPage.About(),
+          settings: settings,
+        );
         case '/tentang': return new FromRightToLeft(
           builder: (_) => new _tentangPage.About(),
           settings: settings,
@@ -193,6 +197,14 @@ class TabsState extends State<Tabs> with AutomaticKeepAliveClientMixin<Tabs>{
                     width: 70.0, height: 120.0),
               ),
             ),
+          ),
+          new ListTile(
+            leading: new Icon(Icons.info),
+            title: new Text('Simposium Asia-Oceania 2019'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.of(context).pushNamed('/simposium');
+            }
           ),
           new ListTile(
             leading: new Icon(Icons.info),

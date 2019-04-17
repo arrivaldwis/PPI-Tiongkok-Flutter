@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "405235108022",
+    "firebase_url": "https://simposiumasiaoceania-87056.firebaseio.com",
+    "project_id": "simposiumasiaoceania-87056",
+    "storage_bucket": "simposiumasiaoceania-87056.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405235108022:android:05eb51294047f9ec",
+        "android_client_info": {
+          "package_name": "id.ppit.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405235108022-phkgnmjlsgv69siaa7q6ihaahjc36elq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.ppit.mobile",
+            "certificate_hash": "daf1262783612ca2429f43f5ee4041434fdd84f1"
+          }
+        },
+        {
+          "client_id": "405235108022-b01opge1uofiboc44otir71gaaqp4tq5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxJmBjleBTJXV6PPgWmsM6aprOjfu9lnc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405235108022-b01opge1uofiboc44otir71gaaqp4tq5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

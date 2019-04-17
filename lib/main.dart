@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import './screens/cabang/Routes.dart';
 import './tabs/beranda.dart' as _firstTab;
-import './tabs/aktifitas.dart' as _secondTab;
+import './screens/rootPage.dart' as _secondTab;
 import './tabs/cabang.dart' as _thirdTab;
 import './screens/tentang/tentang.dart' as _tentangPage;
 import './screens/sambutan.dart' as _sambutanPage;
@@ -10,48 +10,51 @@ import './screens/kontak.dart' as _kontakPage;
 import './screens/kritiksaran.dart' as _kritikSaranPage;
 import './screens/elibrary.dart' as _elibrary;
 import './screens/lapordiri.dart' as _lapordiri;
+import 'package:ppi_tiongkok/services/authentication.dart';
 
 void main() {
   Routes.initRoutes();
   runApp(new MaterialApp(
     title: 'PPI Tiongkok',
-    debugShowCheckedModeBanner: false,
+    debugShowCheckedModeBanner: true,
     theme: new ThemeData(
         primarySwatch: Colors.red,
         scaffoldBackgroundColor: Colors.white,
-        primaryColor: Colors.red, backgroundColor: Colors.white
-    ),
+        primaryColor: Colors.red,
+        backgroundColor: Colors.white),
     home: new Tabs(),
     onGenerateRoute: (RouteSettings settings) {
       switch (settings.name) {
-        case '/simposium': return new FromRightToLeft(
-          builder: (_) => new _tentangPage.About(),
-          settings: settings,
-        );
-        case '/tentang': return new FromRightToLeft(
-          builder: (_) => new _tentangPage.About(),
-          settings: settings,
-        );
-        case '/sambutan': return new FromRightToLeft(
-          builder: (_) => new _sambutanPage.Support(),
-          settings: settings,
-        );
-        case '/kontak': return new FromRightToLeft(
-          builder: (_) => new _kontakPage.Kontak(),
-          settings: settings,
-        );
-        case '/kriran': return new FromRightToLeft(
-          builder: (_) => new _kritikSaranPage.Feedback(),
-          settings: settings,
-        );
-        case '/Elib': return new FromRightToLeft(
-          builder: (_) => new _elibrary.ELib(),
-          settings: settings,
-        );
-        case '/lapordiri': return new FromRightToLeft(
-          builder: (_) => new _lapordiri.Lapordiri(),
-          settings: settings,
-        );
+        case '/tentang':
+          return new FromRightToLeft(
+            builder: (_) => new _tentangPage.About(),
+            settings: settings,
+          );
+        case '/sambutan':
+          return new FromRightToLeft(
+            builder: (_) => new _sambutanPage.Support(),
+            settings: settings,
+          );
+        case '/kontak':
+          return new FromRightToLeft(
+            builder: (_) => new _kontakPage.Kontak(),
+            settings: settings,
+          );
+        case '/kriran':
+          return new FromRightToLeft(
+            builder: (_) => new _kritikSaranPage.Feedback(),
+            settings: settings,
+          );
+        case '/Elib':
+          return new FromRightToLeft(
+            builder: (_) => new _elibrary.ELib(),
+            settings: settings,
+          );
+        case '/lapordiri':
+          return new FromRightToLeft(
+            builder: (_) => new _lapordiri.Lapordiri(),
+            settings: settings,
+          );
       }
     },
     // routes: <String, WidgetBuilder> {
@@ -61,44 +64,36 @@ void main() {
 }
 
 class FromRightToLeft<T> extends MaterialPageRoute<T> {
-  FromRightToLeft({ WidgetBuilder builder, RouteSettings settings })
-    : super(builder: builder, settings: settings);
+  FromRightToLeft({WidgetBuilder builder, RouteSettings settings})
+      : super(builder: builder, settings: settings);
 
   @override
-  Widget buildTransitions(
-    BuildContext context,
-    Animation<double> animation,
-    Animation<double> secondaryAnimation,
-    Widget child) {
-
-    if (settings.isInitialRoute)
-      return child;
+  Widget buildTransitions(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation, Widget child) {
+    if (settings.isInitialRoute) return child;
 
     return new SlideTransition(
       child: new Container(
-        decoration: new BoxDecoration(
-          boxShadow: [
-            new BoxShadow(
-              color: Colors.black26,
-              blurRadius: 25.0,
-            )
-          ]
-        ),
+        decoration: new BoxDecoration(boxShadow: [
+          new BoxShadow(
+            color: Colors.black26,
+            blurRadius: 25.0,
+          )
+        ]),
         child: child,
       ),
       position: new Tween<Offset>(
         begin: const Offset(1.0, 0.0),
         end: Offset.zero,
-      )
-      .animate(
-        new CurvedAnimation(
-          parent: animation,
-          curve: Curves.fastOutSlowIn,
-        )
-      ),
+      ).animate(new CurvedAnimation(
+        parent: animation,
+        curve: Curves.fastOutSlowIn,
+      )),
     );
   }
-  @override Duration get transitionDuration => const Duration(milliseconds: 400);
+
+  @override
+  Duration get transitionDuration => const Duration(milliseconds: 400);
 }
 
 class Tabs extends StatefulWidget {
@@ -106,8 +101,7 @@ class Tabs extends StatefulWidget {
   TabsState createState() => new TabsState();
 }
 
-class TabsState extends State<Tabs> with AutomaticKeepAliveClientMixin<Tabs>{
-
+class TabsState extends State<Tabs> with AutomaticKeepAliveClientMixin<Tabs> {
   bool get wantKeepAlive => true;
 
   PageController _tabController;
@@ -123,63 +117,15 @@ class TabsState extends State<Tabs> with AutomaticKeepAliveClientMixin<Tabs>{
   }
 
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     _tabController.dispose();
   }
 
   @override
-  Widget build (BuildContext context) => new Scaffold(
-
-    //App Bar
-    appBar: new AppBar(
-      title: new Text(
-        _title_app, 
-        style: new TextStyle(
-          fontSize: Theme.of(context).platform == TargetPlatform.iOS ? 17.0 : 20.0,
-        ),
-      ),
-      elevation: Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
-    ),
-
-    //Content of tabs
-    body: new PageView(
-      controller: _tabController,
-      onPageChanged: onTabChanged,
-      children: <Widget>[
-        new _firstTab.HomeMain(),
-        new _secondTab.Dashboard(),
-        new _thirdTab.Settings()
-      ],
-    ),
-
-    //Tabs
-    bottomNavigationBar: Theme.of(context).platform == TargetPlatform.iOS ?
-      new CupertinoTabBar(
-        activeColor: Colors.red,
-        currentIndex: _tab,
-        onTap: onTap,
-        items: TabItems.map((TabItem) {
-          return new BottomNavigationBarItem(
-            title: new Text(TabItem.title),
-            icon: new Icon(TabItem.icon),
-          );
-        }).toList(),
-      ):
-      new BottomNavigationBar(
-        currentIndex: _tab,
-        onTap: onTap,
-        items: TabItems.map((TabItem) {
-          return new BottomNavigationBarItem(
-            title: new Text(TabItem.title),
-            icon: new Icon(TabItem.icon),
-          );
-        }).toList(),
-    ),
-
-    //Drawer
-    drawer: new Drawer(
-      child: new ListView(
+  Widget build(BuildContext context) => new Scaffold(
+      drawer: Drawer(
+          child: new ListView(
         children: <Widget>[
           new Container(
             height: 140.0,
@@ -188,86 +134,73 @@ class TabsState extends State<Tabs> with AutomaticKeepAliveClientMixin<Tabs>{
               decoration: new BoxDecoration(
                 color: Colors.red,
                 image: new DecorationImage(
-                  image: new AssetImage('res/bendera.jpg'),
-                  fit: BoxFit.cover
-                ),
+                    image: new AssetImage('res/bendera.jpg'),
+                    fit: BoxFit.cover),
               ),
               child: new Center(
-                child: new Image.asset('res/logo.jpg',
-                    width: 70.0, height: 120.0),
+                child:
+                    new Image.asset('res/logo.jpg', width: 70.0, height: 120.0),
               ),
             ),
           ),
           new ListTile(
-            leading: new Icon(Icons.info),
-            title: new Text('Simposium Asia-Oceania 2019'),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.of(context).pushNamed('/simposium');
-            }
-          ),
+              leading: new Icon(Icons.info),
+              title: new Text('Tentang'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context).pushNamed('/tentang');
+              }),
           new ListTile(
-            leading: new Icon(Icons.info),
-            title: new Text('Tentang'),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.of(context).pushNamed('/tentang');
-            }
-          ),
+              leading: new Icon(Icons.chat),
+              title: new Text('Sambutan'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context).pushNamed('/sambutan');
+              }),
           new ListTile(
-            leading: new Icon(Icons.chat),
-            title: new Text('Sambutan'),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.of(context).pushNamed('/sambutan');
-            }
-          ),
+              leading: new Icon(Icons.contacts),
+              title: new Text('Kontak'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context).pushNamed('/kontak');
+              }),
           new ListTile(
-            leading: new Icon(Icons.contacts),
-            title: new Text('Kontak'),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.of(context).pushNamed('/kontak');
-            }
-          ),
-          new ListTile(
-            leading: new Icon(Icons.feedback),
-            title: new Text('Kritik dan Saran'),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.of(context).pushNamed('/kriran');
-            }
-          ),
+              leading: new Icon(Icons.feedback),
+              title: new Text('Kritik dan Saran'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context).pushNamed('/kriran');
+              }),
           new ListTile(
               leading: new Icon(Icons.collections_bookmark),
               title: new Text('E-Library'),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.of(context).pushNamed('/Elib');
-              }
-          ),
+              }),
           new ListTile(
               leading: new Icon(Icons.report),
               title: new Text('Lapor Diri'),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.of(context).pushNamed('/lapordiri');
-              }
-          ),
-
+              }),
           new Divider(),
-
           new Container(
-            padding: new EdgeInsets.only(left: 20.0, top: 10.0, right: 20.0, bottom: 20.0),
+            padding: new EdgeInsets.only(
+                left: 20.0, top: 10.0, right: 20.0, bottom: 20.0),
             child: new Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 new Padding(
-                  padding: new EdgeInsets.only(bottom: 10.0,),
+                  padding: new EdgeInsets.only(
+                    bottom: 10.0,
+                  ),
                   child: new Text(
                     'Media patner:',
-                    style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.normal),
+                    style: TextStyle(
+                        fontSize: 15.0, fontWeight: FontWeight.normal),
                   ),
                 ),
                 new Row(
@@ -276,15 +209,18 @@ class TabsState extends State<Tabs> with AutomaticKeepAliveClientMixin<Tabs>{
                   children: <Widget>[
                     new Image.asset(
                       'assets/img/krjogja.png',
-                      height: 30.0, width: 70.0,
+                      height: 30.0,
+                      width: 70.0,
                     ),
                     new Image.asset(
                       'assets/img/myhomieclub.png',
-                      height: 30.0, width: 70.0,
+                      height: 30.0,
+                      width: 70.0,
                     ),
                     new Image.asset(
                       'assets/img/rilisid.png',
-                      height: 30.0, width: 70.0,
+                      height: 30.0,
+                      width: 70.0,
                     ),
                   ],
                 )
@@ -292,43 +228,88 @@ class TabsState extends State<Tabs> with AutomaticKeepAliveClientMixin<Tabs>{
             ),
           )
         ],
-      )
-    )
-  );
+      )),
 
-  void onTap(int tab){
+      //App Bar
+      appBar: new AppBar(
+        title: new Text(
+          _title_app,
+          style: new TextStyle(
+            fontSize:
+                Theme.of(context).platform == TargetPlatform.iOS ? 17.0 : 20.0,
+          ),
+        ),
+        elevation: Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
+      ),
+
+      //Content of tabs
+      body: new PageView(
+        controller: _tabController,
+        onPageChanged: onTabChanged,
+        children: <Widget>[
+          new _firstTab.HomeMain(),
+          new _secondTab.RootPage(auth: new Auth()),
+          new _thirdTab.cabang()
+        ],
+      ),
+
+      //Tabs
+      bottomNavigationBar: Theme.of(context).platform == TargetPlatform.iOS
+          ? new CupertinoTabBar(
+              activeColor: Colors.red,
+              currentIndex: _tab,
+              onTap: onTap,
+              items: TabItems.map((TabItem) {
+                return new BottomNavigationBarItem(
+                  title: new Text(TabItem.title),
+                  icon: new Icon(TabItem.icon),
+                );
+              }).toList(),
+            )
+          : new BottomNavigationBar(
+              currentIndex: _tab,
+              onTap: onTap,
+              items: TabItems.map((TabItem) {
+                return new BottomNavigationBarItem(
+                  title: new Text(TabItem.title),
+                  icon: new Icon(TabItem.icon),
+                );
+              }).toList(),
+            ));
+
+  void onTap(int tab) {
     _tabController.jumpToPage(tab);
   }
 
   void onTabChanged(int tab) {
-    setState((){
+    setState(() {
       this._tab = tab;
     });
 
     switch (tab) {
       case 0:
         this._title_app = TabItems[0].title;
-      break;
+        break;
 
       case 1:
         this._title_app = TabItems[1].title;
-      break;
+        break;
 
       case 2:
         this._title_app = TabItems[2].title;
-      break;
+        break;
     }
   }
 }
 
 class TabItem {
-  const TabItem({ this.title, this.icon });
+  const TabItem({this.title, this.icon});
   final String title;
   final IconData icon;
 }
 
 const List<TabItem> TabItems = const <TabItem>[
   const TabItem(title: 'Beranda', icon: Icons.home),
-  const TabItem(title: 'Aktifitas', icon: Icons.photo_library),
+  const TabItem(title: 'Simposium', icon: Icons.event_available),
   const TabItem(title: 'Cabang', icon: Icons.web)
 ];

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Colors {
-
   const Colors();
-
 
   static const Color appBarTitle = const Color(0xFFFFFFFF);
   static const Color appBarIconColor = const Color(0xFFFFFFFF);
@@ -15,10 +13,9 @@ class Colors {
   static const Color regionCard = const Color(0xFFFFFFFF);
   //static const Color planetListBackground = const Color(0xFF3E3963);
   static const Color regionPageBackground = const Color(0xFFEEEEEE);
-  static const Color planetTitle = const Color(0xFFF44336);
-  static const Color planetLocation = const Color(0x66FFFFFF);
-  static const Color planetDistance = const Color(0x66FFFFFF);
-
+  static const Color regionTitle = const Color(0xFFF44336);
+  static const Color regionLocation = const Color(0x66FFFFFF);
+  static const Color regionDistance = const Color(0x66FFFFFF);
 }
 
 class Dimens {
@@ -29,43 +26,35 @@ class Dimens {
 }
 
 class TextStyles {
-
   const TextStyles();
 
   static const TextStyle appBarTitle = const TextStyle(
       color: Colors.appBarTitle,
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w600,
-      fontSize: 36.0
-  );
+      fontSize: 36.0);
 
   static const TextStyle regionTitle = const TextStyle(
-      color: Colors.planetTitle,
+      color: Colors.regionTitle,
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w600,
-      fontSize: 22.0
-  );
+      fontSize: 22.0);
 
   static const TextStyle planetLocation = const TextStyle(
-      color: Colors.planetLocation,
+      color: Colors.regionLocation,
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w300,
-      fontSize: 14.0
-  );
+      fontSize: 14.0);
 
   static const TextStyle planetDistance = const TextStyle(
-      color: Colors.planetDistance,
+      color: Colors.regionDistance,
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w300,
-      fontSize: 12.0
-  );
+      fontSize: 12.0);
 
   static const TextStyle regionDistance2 = const TextStyle(
-      color: Colors.planetTitle,
+      color: Colors.regionTitle,
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w300,
-      fontSize: 13.0
-  );
-
-
+      fontSize: 13.0);
 }
